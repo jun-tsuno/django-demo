@@ -14,20 +14,21 @@ monthly_challenges = {
   "september": "Learn Python",
   "october": "Do exercise for 20 min a day",
   "november": "Learn Python",
-  "december": "Do exercise for 20 min a day",
+  "december": None
 }
 
 def index(request):
-  list_item = ""
   months = list(monthly_challenges.keys())
 
-  for month in months:
-    capitalized_month = month.capitalize()
-    month_path = reverse("month-challenge", args=[month])
-    list_item += f"<li><a href='{month_path}'>{capitalized_month}</a></li>"
+  # for month in months:
+  #   capitalized_month = month.capitalize()
+  #   month_path = reverse("month-challenge", args=[month])
+  #   list_item += f"<li><a href='{month_path}'>{capitalized_month}</a></li>"
 
-  response_data = f"<ul>{list_item}</ul>"
-  return HttpResponse(response_data)
+  # response_data = f"<ul>{list_item}</ul>"
+  return render(request, "challenges/index.html", {
+    "months": months
+  })
 
 
 # Redirect
